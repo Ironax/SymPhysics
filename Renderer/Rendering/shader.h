@@ -14,6 +14,8 @@ namespace rendering
 		static void CheckCompileErrors(GLuint shader, std::string type);
 
 	public:
+		Shader();
+        ~Shader();
 		Shader(std::string vs, std::string fs);
 		int Compile(std::string vs, std::string fs);
 		void Use();
@@ -22,5 +24,6 @@ namespace rendering
 		void SetUniform1fv(std::string name, const GLfloat* value, GLsizei count);
 		void SetUniform2fv(std::string name, const GLfloat* value, GLsizei count);
 		void SetUniform4fv(std::string name, const GLfloat* value, GLsizei count);
+		void SetUniformMat4(std::string name, const GLfloat* value, GLsizei count);
 	};
 }

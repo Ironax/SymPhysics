@@ -26,6 +26,6 @@ namespace rendering
 		void AddRenderObject(RenderObject* object);
 		void RemoveRenderObject(RenderObject* object);
 
-		glm::vec4 backGroundColor = {0.f, 0.f, 0.f, 0.f};
+		glm::vec4 backGroundColor = {0.1f, 0.1f, 0.1f, 1.f};
 	};
 }

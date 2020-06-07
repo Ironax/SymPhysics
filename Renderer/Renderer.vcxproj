@@ -163,17 +163,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Rendering\camera.cpp" />
     <ClCompile Include="Rendering\display.cpp" />
     <ClCompile Include="Rendering\mesh.cpp" />
+    <ClCompile Include="Rendering\MeshRenderer.cpp" />
     <ClCompile Include="Rendering\renderer.cpp" />
     <ClCompile Include="Rendering\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Rendering\camera.h" />
     <ClInclude Include="Rendering\display.h" />
     <ClInclude Include="Rendering\mesh.h" />
+    <ClInclude Include="Rendering\MeshRenderer.h" />
     <ClInclude Include="Rendering\renderer.h" />
     <ClInclude Include="Rendering\render_object.h" />
     <ClInclude Include="Rendering\shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Rendering\Basic.fs" />
+    <None Include="Rendering\Basic.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

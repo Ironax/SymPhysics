@@ -4,6 +4,12 @@
 #include <fstream>
 #include <sstream>
 
+rendering::Shader::Shader()
+{}
+
+rendering::Shader::~Shader()
+{}
+
 rendering::Shader::Shader(std::string vs, std::string fs)
 {
 	Compile(vs, fs);
@@ -11,7 +17,6 @@ rendering::Shader::Shader(std::string vs, std::string fs)
 
 int rendering::Shader::Compile(std::string vs, std::string fs)
 {
-
 	// 1. retrieve the vertex/fragment source code from filePath
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -42,6 +47,7 @@ int rendering::Shader::Compile(std::string vs, std::string fs)
 	catch (std::ifstream::failure e)
 	{
 		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		return -1;
 	}
 	const char* vShaderCode = vertexCode.c_str();
 	const char * fShaderCode = fragmentCode.c_str();
@@ -49,12 +55,12 @@ int rendering::Shader::Compile(std::string vs, std::string fs)
 	unsigned int vertex, fragment;
 	// vertex shader
 	vertex = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertex, 1, &vShaderCode, NULL);
+	glShaderSource(vertex, 1, &vShaderCode, nullptr);
 	glCompileShader(vertex);
 	CheckCompileErrors(vertex, "VERTEX");
 	// fragment Shader
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragment, 1, &fShaderCode, NULL);
+	glShaderSource(fragment, 1, &fShaderCode, nullptr);
 	glCompileShader(fragment);
 	CheckCompileErrors(fragment, "FRAGMENT");
 
@@ -107,6 +113,16 @@ void rendering::Shader::SetUniform4fv(std::string name, const GLfloat* value, GL
 	GLint loc = glGetUniformLocation(m_glProgram, name.c_str());
 	if (loc != -1)
 		glUniform4fv(loc, count, value);
+	else
+		fprintf(stderr, (name + " location not found.\n").c_str());
+}
+
+
+void rendering::Shader::SetUniformMat4(std::string name, const GLfloat* value, GLsizei count)
+{
+	GLint loc = glGetUniformLocation(m_glProgram, name.c_str());
+	if (loc != -1)
+		glUniformMatrix4fv(loc, count, false, value);
 	else
 		fprintf(stderr, (name + " location not found.\n").c_str());
 }

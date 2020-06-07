@@ -9,6 +9,9 @@ public:
 	int Init();
 	void Render();
 
+	GLFWwindow* GlWindow() const;
+	rendering::Renderer& Renderer();
+private:
 	GLFWwindow* m_glWindow;
 	rendering::Renderer m_renderer;
 };

@@ -44,3 +44,13 @@ void Display::Render()
 		glfwPollEvents();
 	}
 }
+
+GLFWwindow* Display::GlWindow() const
+{
+	return m_glWindow;
+}
+
+rendering::Renderer& Display::Renderer()
+{
+	return m_renderer;
+}

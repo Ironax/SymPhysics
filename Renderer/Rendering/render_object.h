@@ -10,6 +10,6 @@ namespace rendering
 	public:
 		virtual void InitRender() = 0;
 		virtual void Draw() = 0;
-		Shader* m_shader;
+		Shader* shader;
 	};
 }

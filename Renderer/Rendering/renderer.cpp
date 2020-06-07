@@ -29,6 +29,11 @@ void rendering::Renderer::Draw()
 
 	// Clear the screen.
 	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(
+		backGroundColor.x,
+		backGroundColor.y,
+		backGroundColor.z,
+		backGroundColor.w);
 
 	for (RenderObject* renderObject : m_renderObjects)
 	{

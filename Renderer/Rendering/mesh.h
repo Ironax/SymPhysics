@@ -8,6 +8,7 @@ namespace rendering
 	{
 		GLuint VAO;
 		GLuint VBO;
+		GLuint EBO;
 		GLuint m_size;
 		GLenum m_drawType;
 
@@ -16,8 +17,11 @@ namespace rendering
 
 		void GenBuffers();
 		void FillQuadData();
+		void FillCubeData();
 
 		void DrawArray();
 		void DrawArrayInstanced(int numberOfInstances);
+
+		void DrawElements();
 	};
 }
